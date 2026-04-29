@@ -34,23 +34,27 @@ function App() {
   const [myName, setMyName] = useState("");
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const tryResumeSession = () => {
-      const session = readStoredSession();
-      if (!session?.reconnectKey) return;
-      socket.emit("session:resume", { reconnectKey: session.reconnectKey }, (res) => {
-        if (res?.ok) {
-          setMyName(res.name || session.name);
-          setError("");
-          return;
-        }
-        clearStoredSession();
-        setScreen("menu");
-        setLobbyData(null);
-        setGameData(null);
-      });
-    };
+  const tryResumeSession = () => {
+    const session = readStoredSession();
+    if (!session?.reconnectKey) {
+      setError("Keine gespeicherte Session gefunden.");
+      return;
+    }
+    socket.emit("session:resume", { reconnectKey: session.reconnectKey }, (res) => {
+      if (res?.ok) {
+        setMyName(res.name || session.name);
+        setError("");
+        return;
+      }
+      clearStoredSession();
+      setScreen("menu");
+      setLobbyData(null);
+      setGameData(null);
+      setError(res?.error || "Reconnect fehlgeschlagen.");
+    });
+  };
 
+  useEffect(() => {
     socket.on("connect", tryResumeSession);
 
     socket.on("lobby:update", (data) => {
@@ -139,6 +143,7 @@ function App() {
         <MainMenu
           onCreateLobby={handleCreate}
           onJoinLobby={handleJoin}
+          onReconnect={tryResumeSession}
           error={error}
           clearError={() => setError("")}
         />

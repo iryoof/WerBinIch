@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function MainMenu({ onCreateLobby, onJoinLobby, error, clearError }) {
+export default function MainMenu({ onCreateLobby, onJoinLobby, onReconnect, error, clearError }) {
   const [mode, setMode] = useState(null); // null | "create" | "join"
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
@@ -31,6 +31,15 @@ export default function MainMenu({ onCreateLobby, onJoinLobby, error, clearError
 
       {!mode ? (
         <div className="menu-buttons">
+          <button
+            className="btn btn-secondary"
+            onClick={() => {
+              clearError();
+              onReconnect();
+            }}
+          >
+            Wiederverbinden
+          </button>
           <button className="btn btn-primary" onClick={() => { setMode("create"); clearError(); }}>
             Lobby erstellen
           </button>
