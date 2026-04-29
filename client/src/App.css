@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg: #fff7f6;
-  --bg-card: #ffffff;
-  --bg-card-hover: #fff2ef;
-  --bg-input: #fffdfc;
-  --border: #f0dedd;
-  --border-focus: #cf93b0;
-  --text: #5f4151;
-  --text-muted: #9a7689;
-  --text-dim: #be9faf;
-  --primary: #d58cad;
-  --primary-hover: #c9799d;
-  --primary-glow: rgba(213, 140, 173, 0.24);
-  --danger: #d47b86;
-  --danger-hover: #c96f7b;
-  --success: #8abf98;
-  --accent: #e5b88a;
+  --bg: #22201d;
+  --bg-card: #2e2b27;
+  --bg-card-hover: #38342f;
+  --bg-input: #292622;
+  --border: #4a4540;
+  --border-focus: #74b6bb;
+  --text: #ece3d7;
+  --text-muted: #bfb1a2;
+  --text-dim: #97897b;
+  --primary: #ae8765;
+  --primary-hover: #bf9876;
+  --primary-glow: rgba(182, 139, 99, 0.28);
+  --danger: #cf8a7d;
+  --danger-hover: #dea091;
+  --success: #7fae7a;
+  --accent: #6cbec4;
   --radius: 18px;
   --radius-sm: 12px;
 }
@@ -53,9 +53,9 @@ body {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse at 15% 18%, rgba(255, 201, 218, 0.45) 0%, transparent 54%),
-    radial-gradient(ellipse at 88% 86%, rgba(255, 223, 189, 0.35) 0%, transparent 56%),
-    radial-gradient(ellipse at 50% 50%, rgba(245, 225, 245, 0.28) 0%, transparent 72%);
+    radial-gradient(ellipse at 16% 18%, rgba(108, 190, 196, 0.1) 0%, transparent 54%),
+    radial-gradient(ellipse at 86% 84%, rgba(127, 174, 122, 0.1) 0%, transparent 56%),
+    radial-gradient(ellipse at 50% 52%, rgba(146, 132, 118, 0.14) 0%, transparent 72%);
   pointer-events: none;
   z-index: 0;
 }
@@ -126,7 +126,7 @@ body {
 }
 .btn-secondary:hover:not(:disabled) {
   background: var(--bg-card-hover);
-  border-color: var(--primary);
+  border-color: var(--accent);
 }
 
 .btn-ghost {
@@ -212,7 +212,7 @@ input::placeholder, textarea::placeholder {
   width: 72px;
   height: 72px;
   border-radius: 24px;
-  background: linear-gradient(145deg, #d19f76, var(--primary));
+  background: linear-gradient(145deg, #76b6b8, var(--primary));
   font-size: 36px;
   font-weight: 700;
   color: #fff;
@@ -356,13 +356,13 @@ input::placeholder, textarea::placeholder {
 }
 
 .host-badge {
-  background: rgba(255, 212, 59, 0.15);
+  background: rgba(127, 174, 122, 0.18);
   color: var(--accent);
 }
 
 .you-badge {
-  background: rgba(184, 124, 86, 0.15);
-  color: var(--primary);
+  background: rgba(108, 190, 196, 0.18);
+  color: #a3e0e4;
 }
 
 .lobby-actions {
