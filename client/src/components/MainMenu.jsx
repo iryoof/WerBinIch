@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function MainMenu({ onCreateLobby, onJoinLobby, onReconnect, error, clearError }) {
+export default function MainMenu({ onCreateLobby, onJoinLobby, error, clearError }) {
   const [mode, setMode] = useState(null); // null | "create" | "join"
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
@@ -31,15 +31,6 @@ export default function MainMenu({ onCreateLobby, onJoinLobby, onReconnect, erro
 
       {!mode ? (
         <div className="menu-buttons">
-          <button
-            className="btn btn-secondary"
-            onClick={() => {
-              clearError();
-              onReconnect();
-            }}
-          >
-            Wiederverbinden
-          </button>
           <button className="btn btn-primary" onClick={() => { setMode("create"); clearError(); }}>
             Lobby erstellen
           </button>
@@ -50,16 +41,6 @@ export default function MainMenu({ onCreateLobby, onJoinLobby, onReconnect, erro
       ) : (
         <form className="menu-form fade-in" onSubmit={handleSubmit}>
           <h2>{mode === "create" ? "Lobby erstellen" : "Lobby beitreten"}</h2>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={() => {
-              clearError();
-              onReconnect();
-            }}
-          >
-            Wiederverbinden
-          </button>
           <input
             type="text"
             placeholder="Dein Name"
