@@ -53,11 +53,42 @@ body {
   position: fixed;
   inset: 0;
   background:
+    radial-gradient(circle at 12% 16%, rgba(233, 198, 170, 0.28) 0 85px, transparent 92px),
+    radial-gradient(circle at 84% 18%, rgba(172, 207, 188, 0.22) 0 72px, transparent 80px),
+    radial-gradient(circle at 22% 82%, rgba(198, 214, 227, 0.2) 0 68px, transparent 78px),
+    radial-gradient(circle at 78% 76%, rgba(209, 178, 187, 0.2) 0 78px, transparent 88px),
     radial-gradient(ellipse at 16% 18%, rgba(108, 190, 196, 0.1) 0%, transparent 54%),
     radial-gradient(ellipse at 86% 84%, rgba(127, 174, 122, 0.1) 0%, transparent 56%),
     radial-gradient(ellipse at 50% 52%, rgba(146, 132, 118, 0.14) 0%, transparent 72%);
   pointer-events: none;
   z-index: 0;
+}
+
+.app-bg::before,
+.app-bg::after {
+  content: "";
+  position: absolute;
+  border-radius: 58% 42% 68% 32% / 38% 58% 42% 62%;
+  filter: blur(2px);
+  opacity: 0.42;
+}
+
+.app-bg::before {
+  width: 280px;
+  height: 220px;
+  left: -70px;
+  top: 12%;
+  background: linear-gradient(145deg, rgba(233, 198, 170, 0.26), rgba(172, 207, 188, 0.18));
+  transform: rotate(-14deg);
+}
+
+.app-bg::after {
+  width: 320px;
+  height: 250px;
+  right: -90px;
+  bottom: 8%;
+  background: linear-gradient(145deg, rgba(188, 209, 229, 0.2), rgba(214, 179, 170, 0.22));
+  transform: rotate(11deg);
 }
 
 .app > *:not(.app-bg) {
@@ -244,6 +275,20 @@ input::placeholder, textarea::placeholder {
   border-radius: var(--radius);
   border: 1px solid var(--border);
   box-shadow: 0 10px 28px rgba(167, 111, 139, 0.14);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-form::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  right: -44px;
+  top: -42px;
+  border-radius: 56% 44% 52% 48% / 45% 59% 41% 55%;
+  background: radial-gradient(circle at 30% 30%, rgba(196, 226, 207, 0.38), rgba(124, 177, 164, 0.14));
+  pointer-events: none;
 }
 
 .menu-form h2 {
@@ -455,6 +500,20 @@ input::placeholder, textarea::placeholder {
   padding: 16px;
   text-align: center;
   transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.player-card::after {
+  content: "";
+  position: absolute;
+  width: 72px;
+  height: 72px;
+  right: -26px;
+  top: -22px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(213, 196, 163, 0.22), transparent 70%);
+  pointer-events: none;
 }
 
 .player-card:hover {
@@ -690,5 +749,17 @@ input::placeholder, textarea::placeholder {
   .notepad-toggle {
     right: 16px;
     bottom: 16px;
+  }
+
+  .app-bg::before {
+    width: 210px;
+    height: 170px;
+    left: -72px;
+  }
+
+  .app-bg::after {
+    width: 230px;
+    height: 180px;
+    right: -82px;
   }
 }
