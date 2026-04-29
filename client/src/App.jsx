@@ -143,6 +143,7 @@ function App() {
         <MainMenu
           onCreateLobby={handleCreate}
           onJoinLobby={handleJoin}
+          onReconnect={tryResumeSession}
           error={error}
           clearError={() => setError("")}
         />
