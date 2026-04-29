@@ -1,0 +1,21 @@
+{
+  "name": "wer-bin-ich",
+  "version": "1.0.0",
+  "description": "Wer bin ich? - Online Multiplayer Browser Game",
+  "main": "server/index.js",
+  "scripts": {
+    "dev:server": "node server/index.js",
+    "dev:client": "cd client && npm run dev",
+    "build": "npm install && cd client && npm install && npm run build",
+    "start": "node server/index.js",
+    "install:all": "npm install && cd client && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.4",
+    "cors": "^2.8.5"
+  }
+}

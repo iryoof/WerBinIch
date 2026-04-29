@@ -1,0 +1,688 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg: #0f0f14;
+  --bg-card: #1a1a24;
+  --bg-card-hover: #222233;
+  --bg-input: #14141e;
+  --border: #2a2a3a;
+  --border-focus: #6c5ce7;
+  --text: #e8e8f0;
+  --text-muted: #8888aa;
+  --text-dim: #555570;
+  --primary: #6c5ce7;
+  --primary-hover: #7e70f0;
+  --primary-glow: rgba(108, 92, 231, 0.25);
+  --danger: #ff6b6b;
+  --danger-hover: #ff8787;
+  --success: #51cf66;
+  --accent: #ffd43b;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-bg {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(108, 92, 231, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(255, 107, 107, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(108, 92, 231, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.app > *:not(.app-bg) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Animations ─────────────────────────────────────────────────────────────── */
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto 16px;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────────── */
+.btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 2px 12px var(--primary-glow);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 20px var(--primary-glow);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-secondary:hover:not(:disabled) {
+  background: var(--bg-card-hover);
+  border-color: var(--primary);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+}
+.btn-ghost:hover {
+  color: var(--text);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+.btn-danger:hover {
+  background: rgba(255, 107, 107, 0.1);
+  border-color: var(--danger);
+}
+
+.btn-small {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+.btn-solve {
+  display: block;
+  margin: 24px auto 0;
+  padding: 16px 48px;
+  font-size: 18px;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--primary), #a78bfa);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 24px var(--primary-glow);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-solve:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px var(--primary-glow);
+}
+
+/* ── Inputs ─────────────────────────────────────────────────────────────────── */
+input[type="text"], textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+input[type="text"]:focus, textarea:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--text-dim);
+}
+
+/* ── Main Menu ──────────────────────────────────────────────────────────────── */
+.menu-container {
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+}
+
+.logo {
+  margin-bottom: 40px;
+}
+
+.logo-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, var(--primary), #a78bfa);
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 24px var(--primary-glow);
+}
+
+.logo h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.menu-form {
+  background: var(--bg-card);
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.menu-form h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.menu-form input {
+  margin-bottom: 12px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.form-actions .btn {
+  flex: 1;
+}
+
+.error-msg {
+  color: var(--danger);
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+/* ── Lobby ──────────────────────────────────────────────────────────────────── */
+.lobby-container {
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+.lobby-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.lobby-code {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.code-label {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.code-value {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  font-family: 'Inter', monospace;
+}
+
+.player-list {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 20px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.player-list h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.player-item {
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 4px;
+  transition: background 0.15s;
+}
+
+.player-me {
+  background: rgba(108, 92, 231, 0.08);
+}
+
+.player-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.host-badge, .you-badge {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.host-badge {
+  background: rgba(255, 212, 59, 0.15);
+  color: var(--accent);
+}
+
+.you-badge {
+  background: rgba(108, 92, 231, 0.15);
+  color: var(--primary);
+}
+
+.lobby-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.waiting-text {
+  color: var(--text-muted);
+  font-size: 15px;
+  padding: 8px 0;
+}
+
+/* ── Game ────────────────────────────────────────────────────────────────────── */
+.game-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.game-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.my-name-tag {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+}
+
+.writing-phase, .waiting-phase {
+  text-align: center;
+  background: var(--bg-card);
+  padding: 40px 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.writing-phase h2, .waiting-phase h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.write-for {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  font-size: 15px;
+}
+
+.write-for strong {
+  color: var(--primary);
+}
+
+.writing-phase form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.waiting-phase p {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.player-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.player-card:hover {
+  border-color: var(--primary);
+  background: var(--bg-card-hover);
+}
+
+.player-card-name {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.player-card-word {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  word-break: break-word;
+  min-height: 27px;
+}
+
+.player-solved {
+  border-color: var(--success);
+  background: rgba(81, 207, 102, 0.05);
+}
+
+.player-card-solved-actions {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.solved-label {
+  font-size: 12px;
+  color: var(--success);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.solved-info {
+  text-align: center;
+  margin-top: 24px;
+  padding: 20px;
+  background: rgba(108, 92, 231, 0.08);
+  border-radius: var(--radius);
+  border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.solved-info p {
+  margin-bottom: 4px;
+  color: var(--text-muted);
+}
+
+.solved-info strong {
+  color: var(--text);
+}
+
+.btn-leave {
+  display: block;
+  margin: 24px auto 0;
+  font-size: 13px;
+}
+
+/* ── Modal ──────────────────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.modal-word {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.modal-author {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* ── Notepad ────────────────────────────────────────────────────────────────── */
+.notepad-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 50;
+}
+
+.notepad-toggle:hover, .notepad-toggle.notepad-open {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 4px 16px var(--primary-glow);
+}
+
+.notepad-panel {
+  position: fixed;
+  bottom: 84px;
+  right: 24px;
+  width: 280px;
+  height: 320px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.notepad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.notepad-header h4 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.notepad-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.notepad-close:hover {
+  color: var(--text);
+}
+
+.notepad-textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.notepad-textarea:focus {
+  box-shadow: none;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .app {
+    padding: 16px;
+  }
+
+  .logo h1 {
+    font-size: 24px;
+  }
+
+  .logo-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+  }
+
+  .players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+
+  .btn-solve {
+    padding: 14px 36px;
+    font-size: 16px;
+  }
+
+  .notepad-panel {
+    width: calc(100vw - 48px);
+    right: 16px;
+    bottom: 76px;
+  }
+
+  .notepad-toggle {
+    right: 16px;
+    bottom: 16px;
+  }
+}
