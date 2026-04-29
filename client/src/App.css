@@ -53,10 +53,10 @@ body {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(120% 95% at -10% 58%, rgba(226, 193, 160, 0.2) 0 36%, transparent 37%),
-    radial-gradient(95% 82% at 104% 22%, rgba(102, 178, 184, 0.18) 0 42%, transparent 43%),
-    radial-gradient(85% 74% at 84% 95%, rgba(123, 171, 121, 0.14) 0 38%, transparent 39%),
-    radial-gradient(100% 100% at 20% -12%, rgba(198, 189, 180, 0.12) 0 34%, transparent 35%),
+    radial-gradient(120% 90% at -12% 60%, rgba(226, 193, 160, 0.13) 0 34%, transparent 35%),
+    radial-gradient(95% 82% at 104% 22%, rgba(102, 178, 184, 0.11) 0 40%, transparent 41%),
+    radial-gradient(85% 74% at 84% 95%, rgba(123, 171, 121, 0.1) 0 36%, transparent 37%),
+    radial-gradient(100% 100% at 20% -12%, rgba(198, 189, 180, 0.09) 0 32%, transparent 33%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.04));
   pointer-events: none;
   z-index: 0;
@@ -66,9 +66,9 @@ body {
 .app-bg::after {
   content: "";
   position: absolute;
-  border-radius: 58% 42% 63% 37% / 46% 64% 36% 54%;
+  border-radius: 37% 63% 52% 48% / 31% 46% 54% 69%;
   filter: blur(1px);
-  opacity: 0.36;
+  opacity: 0.4;
 }
 
 .app-bg::before {
@@ -77,7 +77,8 @@ body {
   left: -180px;
   top: -20px;
   background: linear-gradient(145deg, rgba(229, 198, 168, 0.2), rgba(177, 207, 194, 0.1));
-  transform: rotate(-11deg);
+  clip-path: polygon(10% 8%, 80% 0%, 100% 34%, 94% 72%, 70% 100%, 28% 95%, 0% 62%, 2% 28%);
+  transform: rotate(-13deg);
 }
 
 .app-bg::after {
@@ -86,7 +87,9 @@ body {
   right: -220px;
   bottom: -40px;
   background: linear-gradient(145deg, rgba(109, 184, 189, 0.18), rgba(165, 185, 164, 0.12));
-  transform: rotate(10deg);
+  border-radius: 52% 48% 31% 69% / 58% 39% 61% 42%;
+  clip-path: polygon(7% 18%, 34% 2%, 76% 0%, 98% 24%, 100% 62%, 84% 92%, 42% 100%, 10% 86%, 0% 48%);
+  transform: rotate(8deg);
 }
 
 .app > *:not(.app-bg) {
