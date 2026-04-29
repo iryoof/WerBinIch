@@ -50,6 +50,16 @@ export default function MainMenu({ onCreateLobby, onJoinLobby, onReconnect, erro
       ) : (
         <form className="menu-form fade-in" onSubmit={handleSubmit}>
           <h2>{mode === "create" ? "Lobby erstellen" : "Lobby beitreten"}</h2>
+          <button
+            type="button"
+            className="btn btn-secondary"
+            onClick={() => {
+              clearError();
+              onReconnect();
+            }}
+          >
+            Wiederverbinden
+          </button>
           <input
             type="text"
             placeholder="Dein Name"
